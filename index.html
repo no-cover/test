@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      background-color: white;
+      margin: 25px;
+    }
+
+    code {
+      font: 110% consolas, monospace;
+    }
+
+    h2 {
+      font-size: 135%;
+    }
+
+    p {
+      font-size: 120%;
+    }
+
+    textarea {
+      font-size: 120%;
+    }
+  </style>
+
+  <script type="text/javascript" src="/test/dist.js"></script>
+  <script type="text/javascript" src="/test/communication.js"></script>
+  <script type="text/javascript" src="/test/common.js"></script>
+  <link rel="stylesheet" type="text/css" href="/test/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="title">Tizen<span style="color: #0dc1e9;"> Widget</span> Installer</div>
+
+        <div class="subtitle">
+          <p>Note that this website only works on Tizen 6.0 (2021) and below (till Tizen 3 [2017]).</p>
+          <p>You'll have to set Host PC IP to 127.0.0.1 in developer mode settings and restart your TV by holding the
+            power button till you see the Samsung logo.</p>
+          <p>Follow the guide <a
+              href="https://developer.samsung.com/smarttv/develop/getting-started/using-sdk/tv-device.html#Connecting-the-TV-and-SDK">here</a>
+            for setting the Host PC IP.</p>
+        </div>
+      </div>
+
+      <p class="status" id="status">Status</p>
+    </div>
+
+    <div class="error-card">
+      <span class="exclamation-mark">!</span>
+
+      <span id="errorDiv" class="error-text">Error Message Here</span>
+    </div>
+
+    <div class="content">
+      <div data-selecteditem="0">
+        <div id="appList">
+          <div class="card selected" tabindex="0" onclick="window.startInstallation();">
+            <h1>Install</h1>
+            <h3>
+              Install wgt on your Tizen device.
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="listener">
+      <!-- NaCl module will be attached inside this div element by a function
+    defined in common.js after "DOMContentLoaded" event occurs. -->
+    </div>
+
+    <script>
+      if (!navigator.userAgent.includes('Tizen')) {
+        alert('This website only works on Tizen devices.');
+      }
+    </script>
+</body>
+
+</html>

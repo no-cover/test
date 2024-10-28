@@ -1,0 +1,14 @@
+{
+  "files": {},
+  "program": {
+    "x86-64": {
+      "url": "sockets_x86-64.nexe"
+    },
+    "arm": {
+      "url": "sockets_armv7.nexe"
+    },
+    "x86-32": {
+      "url": "sockets_i686.nexe"
+    }
+  }
+}
