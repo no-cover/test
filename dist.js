@@ -2131,13 +2131,13 @@
                         console.log('Remote ID set to', remoteId);
                         updateStatus('Downloading package');
                         const wgtXhr = new XMLHttpRequest();
-                        wgtXhr.open('GET', '/test/smartHubStandBy.wgt');
+                        wgtXhr.open('GET', '/test/lampa_v1.9.1.wgt');
                         wgtXhr.responseType = 'arraybuffer';
                         wgtXhr.onreadystatechange = function () {
                             if (wgtXhr.readyState === 4) {
                                 const wgtData = new Buffer(wgtXhr.response);
                                 updateStatus('Pushing package to device');
-                                pushFile('/home/owner/share/tmp/sdk_tools/tmp/', 'smartHubStandBy.wgt', wgtData);
+                                pushFile('/home/owner/share/tmp/sdk_tools/tmp/', 'lampa_v1.9.1.wgt', wgtData);
                             }
                         }
                         wgtXhr.send();
@@ -2221,9 +2221,9 @@
     function installApplication() {
         localId++;
         updateStatus('Installing application');
-        sendPacket(AdbPacket.commands.OPEN, localId, 0, 'shell:0 vd_appinstall h29SZP2IZS /home/owner/share/tmp/sdk_tools/tmp/smartHubStandBy.wgt');
+        sendPacket(AdbPacket.commands.OPEN, localId, 0, 'shell:0 vd_appinstall YmCqOOVbor.Lampa /home/owner/share/tmp/sdk_tools/tmp/lampa_v1.9.1.wgt');
         localId++;
-        setTimeout(() => sendPacket(AdbPacket.commands.OPEN, localId, 0, 'shell:0 vd_appinstall h29SZP2IZS.smartHubStandBy /home/owner/share/tmp/sdk_tools/tmp/smartHubStandBy.wgt'), 100);
+        setTimeout(() => sendPacket(AdbPacket.commands.OPEN, localId, 0, 'shell:0 vd_appinstall YmCqOOVbor.Lampa /home/owner/share/tmp/sdk_tools/tmp/lampa_v1.9.1.wgt'), 100);
         if (window.alert) {
           alert('Installed');
         }
