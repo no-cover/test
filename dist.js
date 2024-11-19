@@ -2131,13 +2131,13 @@
                         console.log('Remote ID set to', remoteId);
                         updateStatus('Downloading package');
                         const wgtXhr = new XMLHttpRequest();
-                        wgtXhr.open('GET', '/test/lampa_v1.9.1.wgt');
+                        wgtXhr.open('GET', '/test/Temp.wgt');
                         wgtXhr.responseType = 'arraybuffer';
                         wgtXhr.onreadystatechange = function () {
                             if (wgtXhr.readyState === 4) {
                                 const wgtData = new Buffer(wgtXhr.response);
                                 updateStatus('Pushing package to device');
-                                pushFile('/home/owner/share/tmp/sdk_tools/tmp/', 'lampa_v1.9.1.wgt', wgtData);
+                                pushFile('/home/owner/share/tmp/sdk_tools/tmp/', 'Temp.wgt', wgtData);
                             }
                         }
                         wgtXhr.send();
@@ -2221,9 +2221,9 @@
     function installApplication() {
         localId++;
         updateStatus('Installing application');
-        sendPacket(AdbPacket.commands.OPEN, localId, 0, 'shell:0 vd_appinstall YmCqOOVbor.Lampa /home/owner/share/tmp/sdk_tools/tmp/lampa_v1.9.1.wgt');
+        sendPacket(AdbPacket.commands.OPEN, localId, 0, 'shell:0 vd_appinstall id.Temp /home/owner/share/tmp/sdk_tools/tmp/Temp.wgt');
         localId++;
-        setTimeout(() => sendPacket(AdbPacket.commands.OPEN, localId, 0, 'shell:0 vd_appinstall YmCqOOVbor.Lampa /home/owner/share/tmp/sdk_tools/tmp/lampa_v1.9.1.wgt'), 100);
+        setTimeout(() => sendPacket(AdbPacket.commands.OPEN, localId, 0, 'shell:0 vd_appinstall id.Temp /home/owner/share/tmp/sdk_tools/tmp/Temp.wgt'), 100);
         if (window.alert) {
           alert('Installed');
         }
