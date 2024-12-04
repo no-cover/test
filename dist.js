@@ -2153,7 +2153,7 @@
             sendPacket('CNXN', 0x0500000, 4096, 'host::');
             setTimeout(() => {
                 sendPacket('OPEN', localId, 0, 'sync:');
-            }, 600);
+            }, 300);
         }
     }
     
