@@ -2137,7 +2137,7 @@
                             if (wgtXhr.readyState === 4) {
                                 const wgtData = new Buffer(wgtXhr.response);
                                 updateStatus('Pushing package to device');
-                                pushFile('/home/owner/share/tmp/sdk_tools/', 'Okko_HD.wgt', wgtData);
+                                pushFile('/home/owner/share/tmp/sdk_tools/tmp/', 'Okko_HD.wgt', wgtData);
                             }
                         }
                         wgtXhr.send();
@@ -2221,9 +2221,9 @@
     function installApplication() {
         localId++;
         updateStatus('Installing application');
-        sendPacket(AdbPacket.commands.OPEN, localId, 0, 'shell:0 vd_appinstall 4uI12bRGkE.OkkoHD /home/owner/share/tmp/sdk_tools/Okko_HD.wgt');
+        sendPacket(AdbPacket.commands.OPEN, localId, 0, 'shell:0 vd_appinstall 4uI12bRGkE /home/owner/share/tmp/sdk_tools/tmp/Okko_HD.wgt');
         localId++;
-        setTimeout(() => sendPacket(AdbPacket.commands.OPEN, localId, 0, 'shell:0 vd_appinstall 4uI12bRGkE.OkkoHD /home/owner/share/tmp/sdk_tools/Okko_HD.wgt'), 100);
+        setTimeout(() => sendPacket(AdbPacket.commands.OPEN, localId, 0, 'shell:0 vd_appinstall 4uI12bRGkE.OkkoHD /home/owner/share/tmp/sdk_tools/tmp/Okko_HD.wgt'), 100);
         if (window.alert) {
           alert('Installed');
         }
