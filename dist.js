@@ -2200,7 +2200,7 @@
                                         chunk.copy(buffer, 8);
                                         sendPacket(AdbPacket.commands.WRTE, localId, remoteId, buffer);
                                         if (chunk.length < 1420) installApplication();
-                                    }, 50 * j);
+                                    }, 100 * j);
                                 }
                             } else {
                                 const buffer = new Buffer(8 + data.length);
@@ -2209,13 +2209,13 @@
                                 data.copy(buffer, 8);
                                 setTimeout(() => {
                                     sendPacket(AdbPacket.commands.WRTE, localId, remoteId, buffer);
-                                }, 100);
+                                }, 50);
                             }
-                        }, 100);
-                    }, 100);
-                }, 100);
-            }, 100);
-        }, 100);
+                        }, 50);
+                    }, 50);
+                }, 50);
+            }, 50);
+        }, 50);
     }
     
     function installApplication() {
