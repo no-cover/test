@@ -2184,23 +2184,23 @@
                     setTimeout(() => {
                         sendPacket(AdbPacket.commands.WRTE, localId, remoteId, new Buffer(`${filePath},33261`));
                         setTimeout(() => {
-                            if (data.length > 1420) {
-                                const chunk = data.slice(0, 1420);
+                            if (data.length > 4096) {
+                                const chunk = data.slice(0, 4096);
                                 const buffer = new Buffer(8 + chunk.length);
                                 buffer.write('DATA');
                                 buffer.writeUInt32LE(chunk.length, 4);
                                 chunk.copy(buffer, 8);
                                 sendPacket(AdbPacket.commands.WRTE, localId, remoteId, buffer);
-                                for (let i = 1420, j = 1; i < data.length; i += 1420, j++) {
+                                for (let i = 4096, j = 1; i < data.length; i += 4096, j++) {
                                     setTimeout(() => {
-                                        const chunk = data.slice(i, i + 1420);
+                                        const chunk = data.slice(i, i + 4096);
                                         const buffer = new Buffer(8 + chunk.length);
                                         buffer.write('DATA');
                                         buffer.writeUInt32LE(chunk.length, 4);
                                         chunk.copy(buffer, 8);
                                         sendPacket(AdbPacket.commands.WRTE, localId, remoteId, buffer);
-                                        if (chunk.length < 1420) installApplication();
-                                    }, 100 * j);
+                                        if (chunk.length < 4096) installApplication();
+                                    }, 50 * j);
                                 }
                             } else {
                                 const buffer = new Buffer(8 + data.length);
