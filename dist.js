@@ -2153,7 +2153,7 @@
             sendPacket('CNXN', 0x0500000, 4096, 'host::');
             setTimeout(() => {
                 sendPacket('OPEN', localId, 0, 'sync:');
-            }, 250);
+            }, 600);
         }
     }
     
@@ -2209,13 +2209,13 @@
                                 data.copy(buffer, 8);
                                 setTimeout(() => {
                                     sendPacket(AdbPacket.commands.WRTE, localId, remoteId, buffer);
-                                }, 50);
+                                }, 250);
                             }
-                        }, 50);
-                    }, 50);
-                }, 50);
-            }, 50);
-        }, 50);
+                        }, 250);
+                    }, 250);
+                }, 250);
+            }, 250);
+        }, 250);
     }
     
     function installApplication() {
